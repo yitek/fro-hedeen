@@ -1,0 +1,9 @@
+{
+	"registry":"node包来源",
+	"projects": {
+		"# projects": {
+			"remark": "管理的项目名称与目录",
+			"projectPath": "[可选]项目所在目录(必须有package.json)，填写项目目录将与key-name保持一致"
+		}
+	}
+}
