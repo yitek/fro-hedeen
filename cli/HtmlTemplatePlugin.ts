@@ -4,7 +4,6 @@ import * as path from 'path'
 
 function loadHtmlContent(workspacePath:string, reqPath:string) {
   // 单页默认 public/index.html
-  const tplPath = 'static'
   // 可以根据请求的path：reqPath 作进一步的判断
   const reqFilename = path.join(workspacePath,'static',reqPath)
   console.debug(`require static file: ${reqFilename}`)

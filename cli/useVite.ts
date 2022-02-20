@@ -1,5 +1,6 @@
 import { spawn } from 'child_process'
 import * as path from 'path'
+import { createProject } from '../shared/project'
 
 
 function startCommand(workspacePath:string=null) {
@@ -34,5 +35,5 @@ function startCommand(workspacePath:string=null) {
     process.exit(code);
   });
 }
-
-startCommand();
+createProject(null)
+startCommand()
