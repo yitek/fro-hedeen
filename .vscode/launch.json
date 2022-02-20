@@ -11,10 +11,11 @@
 			"skipFiles": [
 				"<node_internals>/**"
 			],
-			"program": "${workspaceFolder}\\ibuild\\useVite.js",
+			"program": "${workspaceFolder}\\dist\\cli\\useVite.js",
 			"args":[
 				""
-			]
+			],
+			"sourceMaps": true
 		}
 	]
 }

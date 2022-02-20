@@ -1,20 +1,22 @@
-const { PluginOption } =require('vite')
-const { readFileSync } = require('fs')
-const path = require('path')
+import { PluginOption, ViteDevServer } from 'vite'
+import { readFileSync } from 'fs'
+import * as path from 'path'
 
-function loadHtmlContent(reqPath) {
+function loadHtmlContent(workspacePath:string, reqPath:string) {
   // 单页默认 public/index.html
-  const tplPath = 'ibuild/start.html'
+  const tplPath = 'static'
   // 可以根据请求的path：reqPath 作进一步的判断
-  const reqFilename = path.resolve(process.cwd(), tplPath)
+  const reqFilename = path.join(workspacePath,'static',reqPath)
+  console.debug(`require static file: ${reqFilename}`)
   return readFileSync(reqFilename)
 }
 
-module.exports =function(config){
+export default (workspacePath:string,config:any=null):PluginOption=>{
+  if(!config) config = {}
   return {
     name: 'vite-plugin-hedeen-html-tpl',
     apply: 'serve',
-    configureServer(server) {
+    configureServer(server: ViteDevServer) {
       const { middlewares: app } = server;
       //server.middlewares.use
       app.use(async (req, res, next) => {
@@ -22,7 +24,7 @@ module.exports =function(config){
         const htmlAccepts = ['text/html', 'application/xhtml+xml'];
         const isHtml = !!htmlAccepts.find((a) => req.headers.accept.includes(a))
         if (isHtml) {
-          const html = loadHtmlContent(pathname)
+          const html = loadHtmlContent(workspacePath, pathname)
           res.end(html)
           return
         }

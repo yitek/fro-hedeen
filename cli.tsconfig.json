@@ -1,0 +1,39 @@
+{
+    "compilerOptions": {
+        "module":"CommonJS",
+        "target": "ESNext",
+        "noImplicitAny": false, //在表达式和声明上有隐含的'any'类型时报错。
+        "sourceMap": true,     //用于debug   
+        "rootDir":"src-cli",      //仅用来控制输出的目录结构--outDir。
+        "outDir":"dist/cli",     //重定向输出目录。   
+       // "watch":true ,           //在监视模式下运行编译器。会监视输出文件，在它们改变时重新编译。
+        "declarationDir":"typings",
+        "declaration":true   ,
+        "removeComments":false,
+        
+        "experimentalDecorators":true,
+        "incremental": true, // 之前编译过的内容不在编译，只编译新增的内容
+                              // incremental 打开后编译后会生成 tsconfig.tsbuildinfo，下次编译会去做比对，有不同的地方再进行编译
+
+        "allowJs": true, // 是否允许编译 js 代码，比如 es6 代码
+        "checkJs": true, // 对 js 语法进行检测，比如 js 语法写错了
+        "noUnusedLocals": true, // 没有使用到的变量会提示
+        "noUnusedParameters": true, // 函数里面没有用到的参数会提示
+        //"outFile": "lib/require.js"
+    },
+    //"files":["ts/promise.ts","ts/require.ts"],
+    
+
+  "include": [
+    "src-cli/**/*"
+  ],
+  "exclude": [
+    "@typings",
+    "typings",
+    "dev-env",
+    "node_modules",
+    "dist",
+    "dev-env"
+
+  ]
+}
